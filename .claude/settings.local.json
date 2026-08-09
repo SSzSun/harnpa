@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bun install *)",
+      "Bash(bun run *)",
+      "Bash(bun add *)",
+      "Bash(kill 41824 *)",
+      "Bash(curl -s http://localhost:3000)"
+    ]
+  }
+}
