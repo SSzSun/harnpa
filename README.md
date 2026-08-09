@@ -143,12 +143,3 @@ messages/
 - แบบตัดยอด: A → C 20฿ (1 ครั้ง)
 
 จำนวนการโอนสูงสุด = จำนวนคน - 1
-
-## Made by
-
-**Jaruphat Khenprom**  
-GitHub: [@SSzSun](https://github.com/SSzSun)
-
-## License
-
-MIT
