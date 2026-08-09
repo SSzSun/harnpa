@@ -9,23 +9,29 @@ Add these rules to your Firebase Realtime Database to limit write rate and prote
       "$billId": {
         ".read": true,
         ".write": true,
-        ".validate": "newData.hasChildren(['billName', 'people', 'items', 'payments', 'updatedAt'])",
         "billName": {
-          ".validate": "newData.isString() && newData.val().length <= 100"
+          ".validate": "newData.isString()"
         },
         "people": {
-          ".validate": "newData.hasChildren()",
           "$personId": {
-            ".validate": "newData.hasChildren(['id', 'name']) && newData.child('id').val() === $personId && newData.child('name').isString() && newData.child('name').val().length > 0"
+            ".validate": "newData.hasChildren(['id', 'name'])"
           }
         },
         "items": {
           "$itemId": {
-            ".validate": "newData.hasChildren(['id', 'name', 'price', 'payerId', 'sharedBy']) && newData.child('id').val() === $itemId && newData.child('price').isNumber() && newData.child('price').val() > 0"
+            ".validate": "newData.hasChildren(['id', 'name', 'price', 'payerId', 'sharedBy'])"
+          }
+        },
+        "payments": {
+          "$paymentId": {
+            ".validate": "true"
           }
         },
         "updatedAt": {
           ".validate": "newData.isNumber()"
+        },
+        "$other": {
+          ".validate": false
         }
       }
     }
