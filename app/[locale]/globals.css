@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+@theme {
+  /* Surfaces */
+  --color-canvas: #faf7f2;
+  --color-surface: #ffffff;
+  --color-sunken: #f4efe7;
+  --color-line: #e8e0d4;
+  --color-line-strong: #d9cebd;
+
+  /* Text */
+  --color-ink: #2b2418;
+  --color-ink-soft: #6f6248;
+  --color-ink-faint: #9c8e76;
+
+  /* Brand */
+  --color-brand: #d4a574;
+  --color-brand-strong: #be8a50;
+  --color-brand-tint: #f7ede0;
+
+  /* Semantic */
+  --color-positive: #157f5b;
+  --color-positive-tint: #e4f4ed;
+  --color-negative: #c0342b;
+  --color-negative-tint: #fcebe9;
+
+  /* Elevation */
+  --shadow-card: 0 1px 2px rgb(43 36 24 / 0.05), 0 4px 16px -8px rgb(43 36 24 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(43 36 24 / 0.06), 0 12px 28px -12px rgb(43 36 24 / 0.2);
+  --shadow-sheet: 0 24px 60px -20px rgb(43 36 24 / 0.35);
+
+  /* Typography */
+  --font-sans: var(--font-app), ui-sans-serif, system-ui, sans-serif;
+
+  /* Motion */
+  --animate-fade-in: fade-in 0.18s ease-out;
+  --animate-sheet-in: sheet-in 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-pop-in: pop-in 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-toast-in: toast-in 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark {
+  /* Surfaces */
+  --color-canvas: #0f0d0b;
+  --color-surface: #1a1714;
+  --color-sunken: #252018;
+  --color-line: #332d24;
+  --color-line-strong: #4a4038;
+
+  /* Text */
+  --color-ink: #f0ede8;
+  --color-ink-soft: #bfb4a4;
+  --color-ink-faint: #8a7f6f;
+
+  /* Brand */
+  --color-brand: #d4a574;
+  --color-brand-strong: #e6b885;
+  --color-brand-tint: #2d2518;
+
+  /* Semantic */
+  --color-positive: #20a871;
+  --color-positive-tint: #162e23;
+  --color-negative: #e84a3f;
+  --color-negative-tint: #2f1916;
+
+  /* Elevation */
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.2), 0 4px 16px -8px rgb(0 0 0 / 0.4);
+  --shadow-lift: 0 2px 4px rgb(0 0 0 / 0.25), 0 12px 28px -12px rgb(0 0 0 / 0.5);
+  --shadow-sheet: 0 24px 60px -20px rgb(0 0 0 / 0.7);
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes sheet-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pop-in {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Consistent, visible keyboard focus everywhere. */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-strong);
+    outline-offset: 2px;
+  }
+
+  /* Kill the number-input spinners; prices use plain digits. */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
